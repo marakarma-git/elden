@@ -4,11 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Elden</title>
+    <title>Landing Page</title>
 
     <!-- Bootstrap 5.3 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    {{-- <link rel="stylesheet" href="{{asset('landing/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('landing/css/bootstrap.min.css')}}"> --}}
 
+    <link href="https://db.onlinewebfonts.com/c/9366bd460113d8bf675fd2bdfe1ce764?family=The+Seasons" rel="stylesheet">
+
+    {{-- <link href="{{asset('landing/fonts/Montserrat-Full-Version/Web Fonts/Montserrat/stylesheet.css')}}" rel="stylesheet"> --}}
 
     <!-- Custom CSS -->
     <style>
@@ -20,6 +25,9 @@
         /* Spasi agar konten tidak tertutup navbar fixed */
         body {
             padding-top: 4.5rem;
+            font-family: "The Seasons";
+            /* font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat'; */
         }
 
         /* Hero */
@@ -94,25 +102,101 @@
             background-color: #128C7E;
         }
 
-
-
-
-            :root{
-      --radius-xxl: 1.25rem;
+            /* Fullscreen background */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: url('../../../../landing/img/bg/hero1.png') no-repeat center center/cover;
+      color: white;
     }
-    body{font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";}
-    .display-title{font-family: "Playfair Display", Georgia, serif; font-weight: 600; letter-spacing: .2px;}
-    .brand-card{border:0; border-radius: var(--radius-xxl); overflow:hidden; box-shadow: 0 10px 30px rgba(0,0,0,.08); transition: transform .3s ease, box-shadow .3s ease; height:100%;}
-    .brand-card:hover{transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.12)}
-    .brand-media{position:relative;}
-    .brand-media img{width:100%; height:100%; object-fit:cover;}
-    .brand-media .gradient{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.35) 100%);}
-    .brand-cta{position:absolute; right:.75rem; bottom:.75rem; width:48px; height:48px; display:grid; place-items:center; border-radius:50%; background:#fff; border:1px solid rgba(0,0,0,.08);}
-    .brand-cta svg{width:22px; height:22px}
-    .brand-body{padding:1rem 1rem 1.25rem}
-    .brand-title{margin:0; font-weight:600}
-    .brand-sub{color:#6c757d; font-size:.925rem}
-    .ratio-4x3{aspect-ratio: 4 / 3;}
+
+    /* Hero text styling */
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Centering text vertically */
+    .hero .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+
+    :root{ --radius:28px; }
+    body{
+        background:#f7f7f9;
+        /* font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;  */
+    }
+    .card-col{ margin-bottom:2rem; }
+    .tile{
+      border:0; background:transparent; width:100%; max-width: 390px; margin-inline:auto;
+    }
+    .img-shell{
+      position:relative;
+      overflow:hidden;
+      border-radius:var(--radius);
+      box-shadow:0 10px 26px rgba(0,0,0,.12);
+      aspect-ratio: 9/11;
+      background:#ddd;
+    }
+    .img-shell .carousel, .img-shell .carousel-inner, .img-shell .carousel-item{ height:100%; }
+    .img-shell img{
+      width:100%; height:100%; object-fit:cover; display:block;
+      transform:scale(1.01); transition:transform .45s ease;
+    }
+    .img-shell:hover img{ transform:scale(1.05); }
+    /* Tombol panah PNG pojok kanan bawah */
+    .arrow-btn{
+      position:absolute;
+      right:14px;
+      bottom:14px;
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(0,0,0,.08);
+      backdrop-filter:blur(4px);
+      box-shadow:0 8px 18px rgba(0,0,0,.15);
+      transition:transform .3s ease, background .3s ease;
+      z-index:5;
+    }
+
+    .arrow-btn:hover{
+        transform:translateY(-2px);
+        background:#fff;
+    }
+    .arrow-btn img{
+        width:20px;
+        height:20px;
+    }
+    .tile-title{
+        margin-top:.9rem;
+        font-weight:600;
+        font-size:clamp(1.05rem,1vw + .8rem,1.25rem);
+    }
+    .tile-sub{
+        color:#6b7280;
+        font-size:.95rem;
+    }
+    /* Sembunyikan kontrol default (tetap aksesibel dengan keyboard/screenreader) */
+    .carousel-control-prev,
+    .carousel-control-next{
+        display:none;
+    }
+
+
     </style>
 </head>
 
@@ -145,6 +229,7 @@
         </div>
     </nav>
 
+
     @yield('content')
 
     <!-- WhatsApp Bubble -->
@@ -154,12 +239,15 @@
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTopBtn">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Arrow_up_font_awesome.svg/1200px-Arrow_up_font_awesome.svg.png" alt="Back to Top">
+        <img src="{{asset('landing/img/icons/arrow.png')}}" alt="Back to Top">
     </button>
 
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+    {{-- <script src="{{asset('landing/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('landing/js/bootstrap.bundle.min.js')}}"></script> --}}
 
     <script>
         // Dark mode toggle
@@ -182,6 +270,20 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
     </script>
+
+      <script>
+    // Tombol panah PNG menggerakkan slider terdekat (berdasarkan data-target)
+    document.querySelectorAll('.arrow-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const target = btn.getAttribute('data-target');
+        const el = document.querySelector(target);
+        if (!el) return;
+        const instance = bootstrap.Carousel.getOrCreateInstance(el);
+        instance.next();
+      });
+    });
+  </script>
 
 </body>
 
