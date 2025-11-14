@@ -666,7 +666,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Halaman
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{route('hal-1')}}">Halaman 1</a></li>
+                            <li><a class="dropdown-item" href="{{route('hal-2')}}">Halaman 2</a></li>
+                            <li><a class="dropdown-item" href="{{route('hal-3')}}">Halaman 3</a></li>
+                            <li><a class="dropdown-item" href="{{route('hal-4')}}">Halaman 4</a></li>
+                            <li><a class="dropdown-item" href="{{route('hal-5')}}">Halaman 5</a></li>
+
+                        </ul>
+                    </li>
+
+                    {{-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
@@ -677,7 +691,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#section4">Client</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <button class="btn btn-outline-secondary ms-2" id="toggleDarkMode">
                             <i class="bi bi-moon-stars-fill"></i>
